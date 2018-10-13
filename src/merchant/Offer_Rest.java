@@ -9,8 +9,14 @@ public class Offer_Rest {
 
 	@GET @Path("/offer")@Produces(MediaType.APPLICATION_JSON)
 	public String getOffer() {
-		String pattern = "{ \"Offer on\":\"%s\", \"Price\":\"%s\", \"Expires\": \"%s\"}";
-		return String.format(pattern,  Offer.item, Offer.price, Offer.expiry );	
+		List<String> l = Parser.readFileInList();
+		String str = "";
+		String pattern = "Offer on: %s, Price: %s, Expires: %s";
+		for(int i = 0;i<l.size();i++) {
+			String[] split = l.get(i).split(" ");
+			str += String.format(pattern,  split[0], split[1], split[2] )+"\n";	
+		}
+		return str;
 	}
 	
 	
@@ -22,23 +28,12 @@ public class Offer_Rest {
 		Offer.item   = item;
 		Offer.price   = price;
 		Offer.expiry = expiry;
-		String pattern = "{ \"Offer on\":\"%s\", \"Price\":\"%s\", \"Expires\": \"%s\"}";
+		String pattern = "\"Offer on\":\"%s\", \"Price\":\"%s\", \"Expires\": \"%s\"";
 		return String.format(pattern,  Offer.item, Offer.price, Offer.expiry );
 	
 	}
 	
-	
-
-	@POST @Path("/offer/OfferOn")@Produces(MediaType.TEXT_PLAIN)
-	public String increaseWins() {	return Offer.item; }
-	
-	@POST @Path("/score/price")@Produces(MediaType.TEXT_PLAIN)	
-	public int increaseTies() {	return Offer.price;}
-	
-	@POST @Path("/score/expiry")@Produces(MediaType.TEXT_PLAIN)		
-	public Date increaseLosses() {return Offer.expiry;}
-	
-	@GET @Path("/Offer/Offer on")@Produces(MediaType.TEXT_PLAIN)
+	@GET @Path("/Offer/OfferOn")@Produces(MediaType.TEXT_PLAIN)
 	public String getItem() {return Offer.item;}
 	
 	@GET @Path("/offer/price")@Produces(MediaType.TEXT_PLAIN)

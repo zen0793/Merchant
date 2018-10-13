@@ -3,6 +3,9 @@ import java.util.*;
 public class Offer {
 
 	public static String item;
+	public static int price;
+	public static Date expiry;
+	
 	public static String getItem() {
 		return item;
 	}
@@ -21,7 +24,7 @@ public class Offer {
 	public static void setExpiry(Date expiry) {
 		Offer.expiry = expiry;
 	}
-	public static int price;
-	public static Date expiry;
 	
+
 }
+
