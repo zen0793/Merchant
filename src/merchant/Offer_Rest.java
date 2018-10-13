@@ -1,9 +1,10 @@
+package merchant;
 import javax.ws.rs.*;
 import javax.ws.rs.core.MediaType;
 
 import java.util.*;
 
-@ApplicationPath("/")
+@Path("/")
 public class Offer_Rest {
 
 	@GET @Path("/offer")@Produces(MediaType.APPLICATION_JSON)
@@ -15,7 +16,7 @@ public class Offer_Rest {
 	
 	
 	@PUT @Path("/offer")@Produces(MediaType.APPLICATION_JSON)
-	public String update(@QueryParam("Offer on") 	String item, 
+	public String update(@QueryParam("OfferOn") 	String item, 
 							  @QueryParam("Price")	int price, 
 							  @QueryParam("Expires")Date expiry) {
 		Offer.item   = item;
@@ -28,7 +29,7 @@ public class Offer_Rest {
 	
 	
 
-	@POST @Path("/offer/Offer on")@Produces(MediaType.TEXT_PLAIN)
+	@POST @Path("/offer/OfferOn")@Produces(MediaType.TEXT_PLAIN)
 	public String increaseWins() {	return Offer.item; }
 	
 	@POST @Path("/score/price")@Produces(MediaType.TEXT_PLAIN)	

@@ -1,3 +1,4 @@
+package merchant;
 import java.util.*;
 public class Offer {
 
