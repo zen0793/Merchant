@@ -1,5 +1,7 @@
 package merchant;
 import java.time.LocalDate;
+
+//Offer class
 public class Offer {
 
 	public static String item;
